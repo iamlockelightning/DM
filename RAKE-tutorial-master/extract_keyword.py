@@ -17,23 +17,24 @@ def extractKeyword(doc="", ret_type='list'):
     elif ret_type=='str':
         keywords_list = ''
         for item in keywords:
-            keywords_list += item[0] + '|'
+            keywords_list += item[0] + ' '
         return keywords_list[0:-1]
     else:
         return None
 
 if __name__=="__main__":
-    rawdir = "D:/nyt_corpus/data/2007"
-    keyworddir = "D:data/keyword/"
+    rawdir = "C:/Users/locke/Desktop/doc"
+    keyworddir = "C:/Users/locke/Desktop/key"
     for parent,dirnames,filenames in os.walk(rawdir):
         for filename in filenames:
-            fr = open(os.path.join(parent,filename), 'r')
-            doc = fr.read()
-            fr.close()
-            keywords_list = extractKeyword(doc, 'str')
-            fw = open(os.path.join(keyworddir,'e_'+filename), 'w')
-            fw.write(keywords_list+'\n')
-            fw.close()
+            if os.path.splitext(filename)[1] == '.txt':
+                fr = open(os.path.join(parent,filename), 'r')
+                doc = fr.read()
+                fr.close()
+                keywords_list = extractKeyword(doc, 'str')
+                fw = open(os.path.join(keyworddir, filename+'.key'), 'w')
+                fw.write(keywords_list+'\n')
+                fw.close()
 
 
 '''
