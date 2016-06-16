@@ -132,7 +132,7 @@ if __name__=="__main__":
     
     # extractWord(rawdir)
     
-    # wordFilter(rawdir)
+    wordFilter(rawdir)
 
     
     readLabel(dirr)
